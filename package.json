@@ -1,0 +1,19 @@
+{
+  "name": "graph-fn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/functions/*.js",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0",
+    "@microsoft/microsoft-graph-client": "^3.0.0",
+    "axios": "^1.6.0",
+    "querystring": "^0.2.1"
+  },
+  "devDependencies": {
+    "azure-functions-core-tools": "^4.x"
+  }
+}
