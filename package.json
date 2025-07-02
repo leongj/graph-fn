@@ -5,7 +5,8 @@
   "main": "src/functions/*.js",
   "scripts": {
     "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "test": "echo \"No tests yet...\"",
+    "test-function": "node test-script.js"
   },
   "dependencies": {
     "@azure/functions": "^4.0.0",
@@ -13,7 +14,10 @@
     "axios": "^1.6.0",
     "querystring": "^0.2.1"
   },
+  "optionalDependencies": {
+    "@azure/msal-node": "^2.0.0",
+    "open": "^8.4.0"
+  },
   "devDependencies": {
-    "azure-functions-core-tools": "^4.x"
   }
 }
