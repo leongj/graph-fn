@@ -3,16 +3,6 @@ obj
 csx
 .vs
 edge
-
-# Azure Functions
-.funcpack/
-.azure/
-.vscode/
-test-results/
-*.tsbuildinfo
-
-# Node.js
-npm-debug.log*
 Publish
 
 *.user
@@ -57,5 +47,5 @@ __blobstorage__
 __queuestorage__
 __azurite_db*__.json
 
-# Azure Functions local settings (should NOT be committed)
-local.settings.json
+# vscode settings
+.vscode/

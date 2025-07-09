@@ -3,6 +3,7 @@ const { Client } = require('@microsoft/microsoft-graph-client');
 const axios = require('axios');
 const qs = require('querystring');
 const { Buffer } = require('buffer');
+const jwt = require('jsonwebtoken');
 
 // Initialize Microsoft Graph client
 const initGraphClient = (accessToken) => {
@@ -90,6 +91,10 @@ app.http('msGraphConnector', {
             return { status: 500, body: `Failed to obtain OBO token: ${error.message}` };
         }
 
+        // DEBUG decode the access token and log
+        const decodedToken = jwt.decode(accessToken);
+        context.log(`===DEBUG TOKEN:\n ${JSON.stringify(decodedToken, null, 2)}\n\n`);
+
         // Initialize Graph client
         const client = initGraphClient(accessToken);
         const requestBody = {
@@ -97,14 +102,17 @@ app.http('msGraphConnector', {
                 {
                     entityTypes: ['driveItem'],
                     query: { queryString: searchTerm },
-                    from: 0,
-                    size: 10
+                    // from: 0,
+                    // size: 10
                 }
             ]
         };
 
+        context.log(`===DEBUG Request:\n ${JSON.stringify(requestBody, null, 2)}\n\n`);
+
         try {
             const list = await client.api('/search/query').post(requestBody);
+            context.log('===DEBUG /search/query Response:', JSON.stringify(list, null, 2));
             const processList = async () => {
                 const results = [];
                 await Promise.all(
